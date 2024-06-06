@@ -660,6 +660,7 @@ h4 {
 
 /* COOKIE MESSAGE */
 .cookie-message {
+  padding: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
