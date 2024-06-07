@@ -77,7 +77,7 @@ console.log(getComputedStyle(message).height);
 
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 40 + "px";
-
+/*
 document.documentElement.style.setProperty("--color-primary", "orangered");
 
 // Attributes
@@ -112,3 +112,38 @@ logo.classList.contains("c"); // not includes
 
 // Don't use
 logo.className = "Dima";
+*/
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", (e) => {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log("Current scroll (X/Y)", window.pageXOffset, pageYOffset);
+
+  console.log(
+    "heigth/width viewport",
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX,
+  //   s1coords.top + window.scrollY
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: "smooth",
+  // });
+
+  section1.scrollIntoView({
+    behavior: "smooth",
+  });
+});
