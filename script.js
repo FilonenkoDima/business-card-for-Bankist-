@@ -1,11 +1,13 @@
 "use strict";
 
-// Modal window
-
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+// Modal window
 
 const openModal = (e) => {
   e.preventDefault();
@@ -29,54 +31,94 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Button scrolling
+btnScrollTo.addEventListener("click", (e) => {
+  section1.scrollIntoView({
+    behavior: "smooth",
+  });
+});
+
+// Page navigation
+
+// document.querySelectorAll(".nav__link").forEach((el) => {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+
+//     const id = this.getAttribute("href");
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({
+//       behavior: "smooth",
+//     });
+//   });
+// });
+
+// 1. Add event listenet to common parent element
+// 2. Datermine what element originated the event
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // Matching atrategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+});
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 // Selecting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
-const header = document.querySelector(".header");
-const allSection = document.querySelectorAll(".section");
-console.log(allSection);
+// const header = document.querySelector(".header");
+// const allSection = document.querySelectorAll(".section");
+// console.log(allSection);
 
-document.getElementById("section--1");
-const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
+// document.getElementById("section--1");
+// const allButtons = document.getElementsByTagName("button");
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName("btn"));
+// console.log(document.getElementsByClassName("btn"));
 
 // creating and inserting elements
 // .insertAdjacentHTML;
-const message = document.createElement("div");
-message.classList.add("cookie-message");
+// const message = document.createElement("div");
+// message.classList.add("cookie-message");
 // message.textContent =
 //   "We use cookie for improved functionality and analytics. ";
-message.innerHTML =
-  "We use cookie for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>";
+// message.innerHTML =
+//   "We use cookie for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>";
 
 // header.prepend(message);
-header.append(message);
+// header.append(message);
 // header.append(message.cloneNode(true));
 
 // header.before(message);
 // header.after(message);
 
 // Delete elements
-document.querySelector(".btn--close-cookie").addEventListener("click", () => {
-  message.remove();
-});
+// document.querySelector(".btn--close-cookie").addEventListener("click", () => {
+//   message.remove();
+// });
 
 // Styles
-message.style.backgroundColor = "#37383d";
-message.style.width = "104%";
+// message.style.backgroundColor = "#37383d";
+// message.style.width = "104%";
 
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
+// console.log(message.style.color);
+// console.log(message.style.backgroundColor);
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + "px";
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 40 + "px";
 /*
 document.documentElement.style.setProperty("--color-primary", "orangered");
 
@@ -114,42 +156,6 @@ logo.classList.contains("c"); // not includes
 logo.className = "Dima";
 */
 
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
-
-btnScrollTo.addEventListener("click", (e) => {
-  /*
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-
-  console.log(e.target.getBoundingClientRect());
-
-  console.log("Current scroll (X/Y)", window.pageXOffset, pageYOffset);
-
-  console.log(
-    "heigth/width viewport",
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-  */
-
-  // Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.scrollX,
-  //   s1coords.top + window.scrollY
-  // );
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.scrollX,
-  //   top: s1coords.top + window.scrollY,
-  //   behavior: "smooth",
-  // });
-
-  section1.scrollIntoView({
-    behavior: "smooth",
-  });
-});
-
 /*
 const h1 = document.querySelector("h1");
 
@@ -165,6 +171,8 @@ setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 3000);
 //   alert("onmouseenter: Great! You are reading the heading :D");
 // };
 */
+
+/*
 
 // rgb(255, 255, 255)
 const randomInt = (min, max) =>
@@ -193,3 +201,4 @@ document.querySelector(".nav").addEventListener("click", function (e) {
   console.log("NAV", e.target, e.currentTarget);
   console.log(e.currentTarget === this);
 });
+*/
